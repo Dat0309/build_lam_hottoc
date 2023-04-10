@@ -16,6 +16,7 @@ class UserController extends GetxController {
   bool isLoadedProfile = false;
   bool isUpdateSalary = false;
   int tempSalary = 0;
+  bool isUpdateSalaryHistory = false;
 
   late Profile? profile;
 
@@ -51,5 +52,32 @@ class UserController extends GetxController {
   Future<void> updateSalary(int salary) async {
     int tempSalary = await UserPreference().getTempSalary();
     await UserPreference().setTempSalary(tempSalary + salary);
+  }
+
+  Future<Map<String, dynamic>> updateSalaryHistory() async {
+    var result;
+    isUpdateSalaryHistory = false;
+    await userRepo.updateSalaryHistory().then((value) {
+      if ([200, 201].contains(value.statusCode)) {
+        final Map<String, dynamic> res = json.decode(value.body);
+        profile = Profile.fromMap(res);
+
+        isUpdateSalaryHistory = true;
+        result = {
+          'status': true,
+          'message': 'Successfull',
+          'order': profile,
+        };
+        update();
+      } else {
+        result = {
+          'status': false,
+          'code': value.statusCode,
+          'message': value.body,
+        };
+        update();
+      }
+    });
+    return result;
   }
 }

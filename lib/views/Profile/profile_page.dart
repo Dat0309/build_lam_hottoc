@@ -1,6 +1,8 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:babershop_managerment/constant/colors.dart';
 import 'package:babershop_managerment/controller/user_controller.dart';
 import 'package:babershop_managerment/util/dimensions.dart';
+import 'package:babershop_managerment/views/authentication/widget/button.dart';
 import 'package:babershop_managerment/widgets/big_text.dart';
 import 'package:babershop_managerment/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -170,28 +172,82 @@ class _ProfilePageState extends State<ProfilePage> {
                                           const Align(
                                             alignment: Alignment.topLeft,
                                             child: BigText(
-                                              text: 'Số dịch vụ hôm nay',
+                                              text: 'Lương tháng này',
                                             ),
                                           ),
-                                          const Align(
-                                            alignment: Alignment.center,
-                                            child: BigText(text: '3 Dịch vụ'),
-                                          ),
                                           Align(
-                                            alignment: Alignment.bottomRight,
-                                            child: Container(
-                                              padding: EdgeInsets.all(
-                                                  Dimensions.widthPadding15),
-                                              decoration: BoxDecoration(
-                                                color: AppColors.primaryColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Dimensions.radius15),
-                                              ),
-                                              child: BigText(
-                                                text: 'Xem tất cả',
-                                                color: AppColors.primaryBgColor,
-                                                size: Dimensions.font24,
+                                            alignment: Alignment.center,
+                                            child: SmallText(
+                                                text:
+                                                    "${userController.profile!.salary.toString()} đ"),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              userController
+                                                  .updateSalaryHistory()
+                                                  .then((value) {
+                                                if (value['status']) {
+                                                  AwesomeDialog(
+                                                    context: context,
+                                                    animType: AnimType.scale,
+                                                    dialogType:
+                                                        DialogType.success,
+                                                    body: Center(
+                                                      child: Column(
+                                                        children: [
+                                                          const BigText(
+                                                              text:
+                                                                  'Nhận lương tháng thành công!'),
+                                                          SizedBox(
+                                                            height: Dimensions
+                                                                .widthPadding30,
+                                                          ),
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              Get.back();
+                                                            },
+                                                            child:
+                                                                const CustomButton(
+                                                                    text:
+                                                                        'Trở về'),
+                                                          ),
+                                                          SizedBox(
+                                                            height: Dimensions
+                                                                .widthPadding30,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ).show();
+                                                } else {
+                                                  Get.snackbar(
+                                                    'Không ổn rồi anh Lâm',
+                                                    'Đã có lỗi sảy ra trong quá trình nhận lương. Vui lòng kiểm tra lại thông tin, không thì mất tiền đó nhe!',
+                                                    backgroundColor:
+                                                        AppColors.primaryColor,
+                                                    colorText: AppColors
+                                                        .primaryBgColor,
+                                                  );
+                                                }
+                                              });
+                                            },
+                                            child: Align(
+                                              alignment: Alignment.bottomRight,
+                                              child: Container(
+                                                padding: EdgeInsets.all(
+                                                    Dimensions.widthPadding15),
+                                                decoration: BoxDecoration(
+                                                  color: AppColors.primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          Dimensions.radius15),
+                                                ),
+                                                child: BigText(
+                                                  text: 'Nhận Lương',
+                                                  color:
+                                                      AppColors.primaryBgColor,
+                                                  size: Dimensions.font24,
+                                                ),
                                               ),
                                             ),
                                           ),

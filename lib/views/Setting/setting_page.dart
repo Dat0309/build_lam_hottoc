@@ -1,3 +1,4 @@
+import 'package:babershop_managerment/base/no_data_page.dart';
 import 'package:babershop_managerment/constant/colors.dart';
 import 'package:babershop_managerment/controller/user_controller.dart';
 import 'package:babershop_managerment/util/dimensions.dart';
@@ -77,7 +78,39 @@ class _NotificationPageState extends State<NotificationPage> {
                     const ListServiceSettingWidget(),
                   ],
                 )
-              : Container();
+              : SizedBox(
+                  width: Dimensions.screenWidth,
+                  height: Dimensions.screenHeight,
+                  child: Column(
+                    children: [
+                      AppBarCustom(
+                        isDrawerOpen: isDrawerOpen,
+                        press: () {
+                          setState(() {
+                            xOffset = 0;
+                            yOffset = 0;
+                            scaleFactor = 1;
+                            isDrawerOpen = false;
+                          });
+                        },
+                        pressDrawerOpen: () {
+                          setState(() {
+                            xOffset = Dimensions.widthPadding300 - 100;
+                            yOffset = Dimensions.height120;
+                            scaleFactor = 0.8;
+                            isDrawerOpen = true;
+                          });
+                        },
+                      ),
+                      const SettingQuotesWidget(),
+                      Center(
+                        child: NoDataPage(
+                            text:
+                                'Nhân viên hiện không có quyền truy cập chức năng này!'),
+                      ),
+                    ],
+                  ),
+                );
         }),
       ),
     );

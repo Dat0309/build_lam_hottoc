@@ -11,6 +11,8 @@ class AppUrl {
   static const String PROFILE = USERS + "/profile";
 
   static const String USER_UPDATE_SALARY = USERS + "/update-salary";
+  static const String USER_UPDATE_SALARY_HISTORY =
+      USERS + "/update-salary-history";
 
   static const String BABERSHOP = BASEURL + "babershops";
   static const String ADMIN_GET_ALL_BABERSHOP = BABERSHOP + "/all";
@@ -38,6 +40,7 @@ class AppUrl {
       ORDER + "/admin-get-all-staff-salary";
 
   static const String ADMIN_STATISTICS = ORDER + "/admin-statitis";
+  static const String STAFF_STATISTICS = ORDER + "/staff-statitis";
 
   static const String EXTRACOST = BASEURL + "extracosts";
   static const String ADMIN_GET_ALL_EXTRACOSTS =

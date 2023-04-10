@@ -27,6 +27,7 @@ class OrderController extends GetxController {
   StatistiscModel? statistiscModel = StatistiscModel();
   StatistiscModel? statistiscModelShop1 = StatistiscModel();
   StatistiscModel? statistiscModelShop2 = StatistiscModel();
+  StatistiscModel? staffStatisticsModel = StatistiscModel();
   BookingController bookingController = Get.find();
 
   bool isLoadedOrders = false;
@@ -38,6 +39,7 @@ class OrderController extends GetxController {
   bool isCreated = false;
   bool isLoadedStaffSalary = false;
   bool isLoadedAdminStatistics = false;
+  bool isLoadedStaffStatistics = false;
 
   Future<void> adminGetAllSalary() async {
     isLoadedStaffSalary = false;
@@ -104,6 +106,24 @@ class OrderController extends GetxController {
       isLoadedAdminStatistics = true;
       update();
     }
+  }
+
+  Future<void> staffStatistics() async {
+    isLoadedStaffStatistics = false;
+
+    await orderRepo.staffStatistics().then((value) {
+      if (value.statusCode == 200) {
+        final Map<String, dynamic> res = json.decode(value.body);
+
+        if (res['statistics'] != null) {
+          staffStatisticsModel = StatistiscModel.fromMap(res['statistics']);
+          if (staffStatisticsModel != null) isLoadedStaffStatistics = true;
+          update();
+        }
+      } else {
+        print(value.body);
+      }
+    });
   }
 
   Future<void> adminGetAllOrderOfBabershop(String id) async {
