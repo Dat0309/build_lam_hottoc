@@ -72,7 +72,8 @@ class _ChartStatisticsBaberWidgetState
                 color: AppColors.primaryColor,
                 dataSource: widget.statistics.orderChartData,
                 xValueMapper: (dynamic orderChartData, _) =>
-                    orderChartData['time'].toString().split(" ")[0],
+                    orderChartData['time'].toString().split(" ")[2] +
+                    orderChartData['time'].toString().split(" ")[1],
                 yValueMapper: (dynamic orderChartData, _) =>
                     getTotalPrice(orderChartData['orders']),
                 dataLabelSettings: const DataLabelSettings(isVisible: true),

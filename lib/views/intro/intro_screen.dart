@@ -33,23 +33,23 @@ class _IntroScreenState extends State<IntroScreen> {
 
   final List<Widget> listPage = [
     const ItemIntroWidget(
-      title: 'Ngon miệng',
+      title: 'Thuận tiện',
       description:
-          'Bạn đang suy nghĩ đến một món ăn ngon, phải không? Làm ngay thôi!',
+          'Bạn đang suy nghĩ đến một kiểu tóc đẹp, phải không? Làm ngay thôi!',
       sourceImage: AssetHelper.intro1,
       aligment: Alignment.centerRight,
     ),
     const ItemIntroWidget(
-      title: 'Khoẻ mạnh',
+      title: 'Dễ sử dụng',
       description:
-          'Những công thức món ăn lành mạnh cho bạn và gia đình. Bảo vệ sức khoẻ gia đình bạn.',
+          'Cập nhật, theo dõi doanh thu của tiệm mọi lúc, mọi nơi, chỉ cần wifi.',
       sourceImage: AssetHelper.intro2,
       aligment: Alignment.center,
     ),
     const ItemIntroWidget(
-      title: 'Chúc ngon miệng!',
+      title: 'Chúc vui vẻ!',
       description:
-          'Khám phá những món ăn mới thật đơn giản và bạn có thể dễ dàng chia sẻ chúng với bạn bè của mình.',
+          'Quản lý tiệm tóc, thêm dịch vụ, tự động tính lương, tiết kiệm thời gian.',
       sourceImage: AssetHelper.intro3,
       aligment: Alignment.centerLeft,
     ),

@@ -291,6 +291,7 @@ class OrderController extends GetxController {
           'code': value.statusCode,
           'message': value.body,
         };
+        print(result);
         update();
       }
     });

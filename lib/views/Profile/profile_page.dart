@@ -156,7 +156,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                     Container(
                                       padding: EdgeInsets.all(
-                                          Dimensions.widthPadding15),
+                                          Dimensions.widthPadding10),
                                       width: Dimensions.screenWidth,
                                       height: Dimensions.height140,
                                       decoration: BoxDecoration(
@@ -235,7 +235,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                               alignment: Alignment.bottomRight,
                                               child: Container(
                                                 padding: EdgeInsets.all(
-                                                    Dimensions.widthPadding15),
+                                                    Dimensions.widthPadding10),
                                                 decoration: BoxDecoration(
                                                   color: AppColors.primaryColor,
                                                   borderRadius:
