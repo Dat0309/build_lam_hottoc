@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       return AnimatedSplashScreen(
           duration: 3000,
           backgroundColor: AppColors.primaryBgColor!,
-          splash: Image.asset('assets/images/logo.png'),
+          splash: Image.asset('assets/images/LOGOV3.png'),
           splashIconSize: Dimensions.screenHeight * 0.4,
           splashTransition: SplashTransition.sizeTransition,
           pageTransitionType: PageTransitionType.rightToLeft,
