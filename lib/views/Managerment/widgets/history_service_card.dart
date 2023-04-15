@@ -33,12 +33,8 @@ class _HistoryServiceCartState extends State<HistoryServiceCart> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CircleAvatar(
-            radius: Dimensions.radius15,
-            backgroundImage: AssetImage(widget.image),
-          ),
           SizedBox(
-            width: Dimensions.width150,
+            width: Dimensions.width150 - 30,
             child: SmallText(
               text: widget.serviceName,
               color: AppColors.pargColor,

@@ -8,14 +8,14 @@ import 'package:babershop_managerment/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HistoryServiceWidget extends StatefulWidget {
-  const HistoryServiceWidget({super.key});
+class HistoryService2Widget extends StatefulWidget {
+  const HistoryService2Widget({super.key});
 
   @override
-  State<HistoryServiceWidget> createState() => _HistoryServiceWidgetState();
+  State<HistoryService2Widget> createState() => _HistoryService2WidgetState();
 }
 
-class _HistoryServiceWidgetState extends State<HistoryServiceWidget> {
+class _HistoryService2WidgetState extends State<HistoryService2Widget> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,23 +42,23 @@ class _HistoryServiceWidgetState extends State<HistoryServiceWidget> {
                             child: ListView.builder(
                                 shrinkWrap: true,
                                 physics: const BouncingScrollPhysics(),
-                                itemCount: orderController.orders1.length,
+                                itemCount: orderController.orders2.length,
                                 itemBuilder: (context, index) =>
                                     HistoryServiceCart(
                                         image: 'assets/images/LOGOV2.jpg',
                                         serviceName: orderController
-                                            .orders1[index].servicesItems
+                                            .orders2[index].servicesItems
                                             .map((e) => e['name'].toString())
                                             .join(", "),
                                         time:
                                             orderController
-                                                .orders1[index].createdAt
+                                                .orders2[index].createdAt
                                                 .toString()
                                                 .split("T")[0],
-                                        amout: orderController.orders1[index]
+                                        amout: orderController.orders2[index]
                                             .serviceTotalPrice,
                                         paymentMethod: orderController
-                                            .orders1[index].paymentMethod)),
+                                            .orders2[index].paymentMethod)),
                           ),
                         ),
                       ],

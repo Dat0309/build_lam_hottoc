@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_typing_uninitialized_variables
+// ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_typing_uninitialized_variables, unnecessary_null_comparison
 import 'dart:convert';
 
 import 'package:babershop_managerment/controller/booking_controller.dart';
@@ -16,6 +16,8 @@ class OrderController extends GetxController {
   });
 
   List<dynamic> orders = [];
+  List<dynamic> orders1 = [];
+  List<dynamic> orders2 = [];
   List<dynamic> baberOrdersByAdmin = [];
   List<dynamic> staffOrderByAdmin = [];
   List<dynamic> baberOrderByStaff = [];
@@ -126,9 +128,11 @@ class OrderController extends GetxController {
     });
   }
 
-  Future<void> adminGetAllOrderOfBabershop(String id) async {
+  Future<void> adminGetAllOrderOfBabershop() async {
     adminLoadedBaberOrder = false;
-    await orderRepo.adminGetBabershopOrder(id).then((value) {
+    await orderRepo
+        .adminGetBabershopOrder('64056512ad05bb43ae0d0e01')
+        .then((value) {
       if (value.statusCode == 200) {
         final Map<String, dynamic> resData = json.decode(value.body);
 
@@ -137,14 +141,35 @@ class OrderController extends GetxController {
           for (int i = 0; i < resData['order'].length; i++) {
             if (resData['order'][i] != null) {
               Map<String, dynamic> map = resData['order'][i];
-              baberOrdersByAdmin.add(Order.fromMap(map));
+              orders1.add(Order.fromMap(map));
             }
           }
-          adminLoadedBaberOrder = true;
-          update();
         }
       }
     });
+
+    await orderRepo
+        .adminGetBabershopOrder('64056512ad05bb43ae0d0e02')
+        .then((value) {
+      if (value.statusCode == 200) {
+        final Map<String, dynamic> resData = json.decode(value.body);
+
+        if (resData['order'].length > 0) {
+          baberOrdersByAdmin.clear();
+          for (int i = 0; i < resData['order'].length; i++) {
+            if (resData['order'][i] != null) {
+              Map<String, dynamic> map = resData['order'][i];
+              orders2.add(Order.fromMap(map));
+            }
+          }
+        }
+      }
+    });
+
+    if (orders1 != null && orders2 != null) {
+      adminLoadedBaberOrder = true;
+      update();
+    }
   }
 
   Future<void> adminGetAllOrder() async {

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:babershop_managerment/controller/auth_controller.dart';
 import 'package:babershop_managerment/controller/babershop_controller.dart';
+import 'package:babershop_managerment/controller/extracost_controller.dart';
 import 'package:babershop_managerment/controller/hairstyle_controller.dart';
 import 'package:babershop_managerment/controller/services_controller.dart';
 import 'package:babershop_managerment/helper/local_storage_helper.dart';
@@ -44,6 +45,7 @@ class _MyAppState extends State<MyApp> {
     Get.find<HairStyleController>().getHairstyle();
     Get.find<ServiceController>().getServices();
     Get.find<BabershopController>().getBabershop();
+    Get.find<ExtracostController>();
 
     super.initState();
   }

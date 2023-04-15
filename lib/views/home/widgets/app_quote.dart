@@ -33,6 +33,12 @@ class _AppQuoteState extends State<AppQuote> {
                   GestureDetector(
                     onTap: () {
                       user.clearSalary();
+                      Get.snackbar(
+                        'Bắt đầu làm việc thôi',
+                        'Sẵn sàng để làm việc!',
+                        backgroundColor: AppColors.primaryColor,
+                        colorText: AppColors.primaryBgColor,
+                      );
                     },
                     child: Container(
                       padding: EdgeInsets.all(Dimensions.widthPadding15),

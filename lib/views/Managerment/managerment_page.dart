@@ -2,6 +2,7 @@ import 'package:babershop_managerment/constant/colors.dart';
 import 'package:babershop_managerment/controller/order_controller.dart';
 import 'package:babershop_managerment/controller/user_controller.dart';
 import 'package:babershop_managerment/util/dimensions.dart';
+import 'package:babershop_managerment/views/Managerment/widgets/babershop_order_statistic.dart';
 import 'package:babershop_managerment/views/Managerment/widgets/bar_chart_widget.dart';
 import 'package:babershop_managerment/views/Managerment/widgets/managerment_infor_staff_widget.dart';
 import 'package:babershop_managerment/views/Managerment/widgets/managerment_infor_widget.dart';
@@ -73,6 +74,7 @@ class _ManagermentPageState extends State<ManagermentPage> {
                     const ManagermentInfoWidget(),
                     const BarChartWidget(),
                     // HistoryServiceWidget(),
+                    const BabershopOrderStatisticWidet(),
                     const StaffSalaryWidget(),
                   ],
                 )

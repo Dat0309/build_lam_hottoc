@@ -46,7 +46,7 @@ class _ServicesCardState extends State<ServicesCard> {
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: AppColors.secondaryColor,
                 image: const DecorationImage(
-                  image: AssetImage('assets/images/logo.png'),
+                  image: AssetImage('assets/images/LOGOV2.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
